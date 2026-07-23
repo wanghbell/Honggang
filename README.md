@@ -1,30 +1,33 @@
-# Honggang Wang — Light Academic Website
+# Honggang Wang Academic Website
 
-A responsive, modular static website designed for GitHub Pages.
+A modular, light-background, single-page academic website designed for GitHub Pages.
 
-## Highlights
-- Light, modern academic layout
-- Reusable JavaScript components
-- Centralized content in `js/data.js`
-- Local SVG icon system with no icon package dependency
-- Mobile navigation and accessibility support
-- No links or assets from the previous website
+## Content structure
 
-## Customize
-1. Edit text, metrics, cards, timeline, and publication links in `js/data.js`.
-2. Edit contact details in `js/components.js`.
-3. Replace the `HW` monogram inside the hero with a local portrait image if desired.
+All original navigation categories are represented:
 
-Example:
-```html
-<img src="assets/honggang-wang.jpg" alt="Professor Honggang Wang">
-```
+- Home
+- Research
+- Professional Activities
+- Publications
+- Recent Talks
+- Awards
+- AIM Research Lab
+- News
+- Contact
 
-## Publish with GitHub Pages
-1. Create a new GitHub repository.
-2. Upload all files from this folder to the repository root.
+## Publish on GitHub Pages
+
+1. Create a public GitHub repository.
+2. Upload all files in this folder to the repository root.
 3. Open **Settings → Pages**.
-4. Under **Build and deployment**, select **Deploy from a branch**.
-5. Select the `main` branch and `/root`, then save.
+4. Select **Deploy from a branch**, `main`, `/ (root)`.
+5. Save.
 
-The website uses only static HTML, CSS, and JavaScript, so no build command is needed.
+## Edit content
+
+- Page content and records: `js/site.js`
+- Visual design: `css/site.css`
+- Metadata and navigation shell: `index.html`
+
+No build process is required.
