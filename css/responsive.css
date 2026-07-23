@@ -1,3 +1,22 @@
-@media(max-width:900px){.nav-links{display:none;position:absolute;top:74px;left:0;right:0;padding:25px 20px;background:#07111f;flex-direction:column}.nav-links.open{display:flex}.menu-btn{display:block}.hero{grid-template-columns:1fr;padding-top:130px}.hero-visual{max-width:520px}.metrics{grid-template-columns:repeat(2,1fr)}.section-heading{grid-template-columns:1fr}.cards.three,.feature-grid,.publication-grid,.contact-grid{grid-template-columns:1fr}.award-strip{grid-template-columns:repeat(2,1fr)}.signal{max-width:380px}.signal span{transform:rotate(calc(var(--i)*72deg)) translateX(145px) rotate(calc(var(--i)*-72deg))}}
-@media(max-width:580px){.container{width:min(100% - 26px,var(--max))}.hero h1{font-size:43px}.hero-actions{flex-direction:column;align-items:flex-start}.book-card{grid-template-columns:1fr}.award-strip{grid-template-columns:1fr}.award-strip>div{border-right:0;border-bottom:1px solid var(--line)}.timeline-item{grid-template-columns:1fr 44px;gap:8px 14px}.timeline-item>div:last-child{grid-column:1/-1}.signal span{transform:rotate(calc(var(--i)*72deg)) translateX(115px) rotate(calc(var(--i)*-72deg));font-size:12px}footer .container{flex-direction:column;gap:4px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.ticker div{animation:none}.cursor-glow{display:none}}
+@media (max-width: 900px) {
+  .nav-links { position: fixed; inset: 76px 20px auto; display: none; flex-direction: column; align-items: stretch; padding: 22px; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow-lg); }
+  .nav-links.open { display: flex; }
+  .menu-button { display: grid; place-items: center; }
+  .hero-grid,.about-grid,.contact-panel { grid-template-columns: 1fr; }
+  .hero-visual { min-height: 450px; }
+  .about-sticky { position: static; }
+  .card-grid { grid-template-columns: 1fr 1fr; }
+  .award-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .container { width: min(calc(100% - 28px),var(--max)); }
+  .section { padding: 72px 0; }
+  .hero { padding-top: 48px; }
+  .card-grid,.award-grid,.metrics { grid-template-columns: 1fr; }
+  .metric + .metric { border-left: 0; border-top: 1px solid var(--line); }
+  .timeline-item { grid-template-columns: 1fr; gap: 6px; }
+  .contact-panel { padding: 30px; }
+  .footer-wrap { flex-direction: column; }
+  .float-card { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
