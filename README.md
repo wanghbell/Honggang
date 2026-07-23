@@ -31,3 +31,5 @@ All original navigation categories are represented:
 - Metadata and navigation shell: `index.html`
 
 No build process is required.
+
+The homepage portrait is stored locally at `assets/honggang.png`, so it is included in the published site and does not depend on an external image URL.
