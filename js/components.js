@@ -1,31 +1,82 @@
-import { icon } from './icons.js';
+(function () {
+  const d = window.SITE_DATA;
+  const byId = (id) => document.getElementById(id);
 
-export const header = nav => `
-<div class="site-header"><div class="container nav-wrap">
-  <a class="brand" href="#top"><span class="brand-mark">HW</span><span>Honggang Wang</span></a>
-  <nav class="nav-links" id="nav-links" aria-label="Primary navigation">${nav.map(([n,h])=>`<a href="${h}">${n}</a>`).join('')}</nav>
-  <button class="menu-button" id="menu-button" aria-label="Open navigation" aria-expanded="false">${icon('menu')}</button>
-</div></div>`;
+  const renderResearch = () => {
+    byId("research-grid").innerHTML = d.research.map((item, i) => `
+      <article class="research-card reveal" style="--delay:${i * 45}ms">
+        <span class="card-icon" aria-hidden="true">${item.icon}</span>
+        <h3>${item.title}</h3><p>${item.text}</p><span class="card-index">0${i + 1}</span>
+      </article>`).join("");
+    byId("project-list").innerHTML = d.projects.map((p, i) => `
+      <article class="project reveal" style="--delay:${i * 55}ms">
+        <span class="project-number">${p.number}</span>
+        <div><span class="pill">${p.tag}</span><h3>${p.title}</h3><p>${p.text}</p></div>
+      </article>`).join("");
+  };
 
-export const hero = d => `<section class="hero" id="top"><div class="container">
-<div class="hero-grid"><div class="hero-copy"><p class="eyebrow">${d.eyebrow}</p><h1>${d.title}</h1><p class="lead">${d.intro}</p>
-<div class="btn-row"><a class="btn primary" href="#research">Explore research ${icon('arrow')}</a><a class="btn secondary" href="#contact">Get in touch</a></div></div>
-<div class="hero-visual"><div class="float-card one">IEEE Fellow</div><div class="portrait-card"><div class="portrait-inner"><div class="monogram">HW</div><div class="portrait-caption"><strong>Professor & Department Chair</strong><br><span>Computer Science and Engineering</span></div></div></div><div class="float-card two">AI · Multimedia · Health</div></div></div>
-<div class="metrics">${d.metrics.map(([v,l])=>`<div class="metric"><strong>${v}</strong><span>${l}</span></div>`).join('')}</div>
-</div></section>`;
+  const renderActivities = () => {
+    byId("activities-list").innerHTML = d.activities.map((group, i) => `
+      <article class="accordion reveal" style="--delay:${i * 45}ms">
+        <button class="accordion-trigger" type="button" aria-expanded="${i === 0}" aria-controls="activity-${i}">
+          <span class="accordion-icon" aria-hidden="true">${group.icon}</span>
+          <span class="accordion-title"><strong>${group.title}</strong><small>${group.count}</small></span>
+          <span class="accordion-plus" aria-hidden="true">＋</span>
+        </button>
+        <div class="accordion-panel" id="activity-${i}" ${i === 0 ? "" : "hidden"}>
+          <ul>${group.items.map(item => `<li>${item}</li>`).join("")}</ul>
+        </div>
+      </article>`).join("");
+  };
 
-export const sectionHeading = (eyebrow,title,text='') => `<div class="section-heading"><p class="eyebrow">${eyebrow}</p><h2>${title}</h2>${text?`<p class="lead">${text}</p>`:''}</div>`;
+  const renderPublicationFilters = () => {
+    const types = ["All", ...new Set(d.publications.map(p => p.type))];
+    byId("publication-filters").innerHTML = types.map((t, i) => `<button type="button" class="filter-button${i === 0 ? " active" : ""}" data-filter="${t}">${t}</button>`).join("");
+  };
 
-export const research = items => `<section class="section alt" id="research"><div class="container">${sectionHeading('Research','Interdisciplinary work with real-world impact','A focused portfolio connecting intelligent systems, secure infrastructure, and human-centered applications.')}<div class="card-grid">${items.map(x=>`<article class="card"><div class="icon-badge">${icon(x.icon)}</div><h3>${x.title}</h3><p>${x.text}</p><div class="tag-list">${x.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div></article>`).join('')}</div></div></section>`;
+  window.renderPublications = (filter = "All", query = "") => {
+    const normalized = query.toLowerCase().trim();
+    const results = d.publications.filter(p => (filter === "All" || p.type === filter) && (!normalized || `${p.title} ${p.authors} ${p.venue} ${p.year}`.toLowerCase().includes(normalized)));
+    byId("publication-list").innerHTML = results.length ? results.map(p => `
+      <article class="publication-item">
+        <div class="publication-year">${p.year}</div>
+        <div class="publication-body"><div class="publication-tags"><span>${p.type}</span><span>${p.venue}</span></div><h3>${p.title}</h3><p>${p.authors}</p></div>
+        <span class="publication-arrow" aria-hidden="true">↗</span>
+      </article>`).join("") : `<p class="empty-state">No publications match that search.</p>`;
+  };
 
-export const about = () => `<section class="section" id="about"><div class="container about-grid"><div class="about-sticky">${sectionHeading('Profile','Researcher, mentor, and academic builder')}</div><div><p class="lead">Professor Wang develops technologies and programs that connect rigorous computing research with healthcare, communications, security, and graduate education.</p><div class="fact-list"><div class="fact">${icon('brain')}<div><strong>Research</strong><br><span>AI, multimedia, networks, IoT, cybersecurity, and digital health.</span></div></div><div class="fact">${icon('users')}<div><strong>Leadership</strong><br><span>Academic program development, research strategy, and professional service.</span></div></div><div class="fact">${icon('book')}<div><strong>Education</strong><br><span>Project-based graduate training and mentorship for emerging technology careers.</span></div></div></div></div></div></section>`;
+  const renderTalks = () => {
+    byId("talks-list").innerHTML = d.talks.map((talk, i) => `
+      <article class="timeline-item reveal" style="--delay:${Math.min(i, 8) * 40}ms">
+        <div class="timeline-year">${talk.year}</div><div class="timeline-dot" aria-hidden="true"></div>
+        <div class="timeline-card"><span class="pill">${talk.kind}</span><h3>${talk.title}</h3><p>${talk.event}</p><small>${talk.place}</small></div>
+      </article>`).join("");
+  };
 
-export const timeline = items => `<section class="section" id="leadership"><div class="container">${sectionHeading('Leadership','Selected academic and professional roles')}<div class="timeline">${items.map(([y,r,o])=>`<article class="timeline-item"><div class="timeline-year">${y}</div><div><h3>${r}</h3><p>${o}</p></div></article>`).join('')}</div></div></section>`;
+  const renderAwards = () => {
+    byId("award-features").innerHTML = d.awardFeatures.map((a, i) => `
+      <article class="award-card reveal" style="--delay:${i * 50}ms"><div class="award-top"><span class="card-icon">${a.icon}</span><strong>${a.year}</strong></div><h3>${a.title}</h3><p>${a.text}</p></article>`).join("");
+    byId("awards-archive").innerHTML = d.awards.map((a, i) => `<li><span>${String(i + 1).padStart(2, "0")}</span>${a}</li>`).join("");
+  };
 
-export const publications = items => `<section class="section alt" id="publications"><div class="container">${sectionHeading('Publications','Research profiles and scholarly work')}<div class="card-grid">${items.map(([t,d,u])=>`<a class="card link-card" href="${u}" target="_blank" rel="noopener"><div><h3>${t}</h3><p>${d}</p></div>${icon('arrow')}</a>`).join('')}</div></div></section>`;
+  const renderLab = () => {
+    byId("lab-points").innerHTML = d.labPoints.map(p => `<div class="lab-point"><span>${p.icon}</span><div><h3>${p.title}</h3><p>${p.text}</p></div></div>`).join("");
+  };
 
-export const awards = items => `<section class="section" id="recognition"><div class="container">${sectionHeading('Recognition','Selected honors and distinctions')}<div class="award-grid">${items.map(x=>`<article class="card award"><div class="icon-badge">${icon(x.icon)}</div><h3>${x.title}</h3><p>${x.text}</p></article>`).join('')}</div></div></section>`;
+  window.renderNews = (expanded = false) => {
+    const items = expanded ? d.news : d.news.slice(0, 6);
+    byId("news-list").innerHTML = items.map((n, i) => `
+      <article class="news-card reveal visible" style="--delay:${(i % 6) * 45}ms">
+        <div class="news-meta"><span>${n.tag}</span><time>${n.year}</time></div><h3>${n.title}</h3><p>${n.text}</p>
+      </article>`).join("");
+  };
 
-export const contact = () => `<section class="section" id="contact"><div class="container"><div class="contact-panel"><div><p class="eyebrow" style="color:#b9fff7">Contact</p><h2>Let’s connect around research, education, and collaboration.</h2><p class="lead">For academic inquiries, research collaboration, invited talks, or graduate program engagement.</p></div><div class="contact-links"><a class="contact-link" href="mailto:honggang.wang@yu.edu">${icon('mail')} honggang.wang@yu.edu</a><div class="contact-link">${icon('pin')} New York, NY</div><a class="contact-link" href="https://scholar.google.com/citations?user=CJiNcbAAAAAJ&hl=en" target="_blank" rel="noopener">${icon('scholar')} Google Scholar</a></div></div></div></section>`;
-
-export const footer = () => `<div class="site-footer"><div class="container footer-wrap"><span>© ${new Date().getFullYear()} Honggang Wang</span><span>Designed for GitHub Pages</span></div></div>`;
+  renderResearch();
+  renderActivities();
+  renderPublicationFilters();
+  window.renderPublications();
+  renderTalks();
+  renderAwards();
+  renderLab();
+  window.renderNews();
+})();

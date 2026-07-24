@@ -1,0 +1,227 @@
+/*
+  Professional editorial refinement layer.
+  It intentionally leaves the modular base stylesheet untouched.
+*/
+
+:root {
+  --ink: #102033;
+  --ink-soft: #52677c;
+  --navy: #081c31;
+  --blue: #155f9d;
+  --blue-dark: #0d4778;
+  --sky: #eaf3fa;
+  --sky-deep: #d8eaf7;
+  --tint: #f5f8fb;
+  --line: #dce5ec;
+  --teal: #278c8a;
+  --radius: 16px;
+  --shadow: 0 24px 60px rgba(19, 51, 78, .12);
+  --shadow-soft: 0 12px 32px rgba(21, 63, 95, .08);
+}
+
+body {
+  background: #fff;
+  letter-spacing: -.005em;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -.045em;
+}
+
+.site-header.scrolled {
+  background: rgba(255, 255, 255, .97);
+  box-shadow: 0 6px 24px rgba(23, 50, 72, .05);
+}
+
+.brand-mark {
+  border-radius: 9px;
+  background: var(--navy);
+  box-shadow: none;
+}
+
+.site-nav a {
+  color: #4b6073;
+  letter-spacing: .01em;
+}
+
+.hero {
+  min-height: 750px;
+  background:
+    linear-gradient(90deg, rgba(21, 95, 157, .035) 1px, transparent 1px),
+    linear-gradient(rgba(21, 95, 157, .035) 1px, transparent 1px),
+    radial-gradient(circle at 78% 24%, #e6f3fb 0, transparent 34%),
+    #fbfdff;
+  background-size: 54px 54px, 54px 54px, auto, auto;
+}
+
+.hero::before,
+.hero-orb {
+  display: none;
+}
+
+.hero-grid {
+  grid-template-columns: minmax(0, 1.18fr) minmax(340px, .68fr);
+}
+
+.hero h1 {
+  max-width: 790px;
+  font-size: clamp(3.2rem, 5.8vw, 5.6rem);
+}
+
+.hero h1 em {
+  color: var(--blue);
+}
+
+.hero-lead {
+  max-width: 670px;
+}
+
+.portrait-wrap {
+  padding: 0;
+}
+
+.portrait-frame {
+  max-width: 440px;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #cfdae3;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+.portrait-frame::before {
+  inset: 22px -20px -20px 22px;
+  border: 1px solid #b8d0e2;
+  border-radius: 18px;
+}
+
+.portrait-frame img {
+  aspect-ratio: 595 / 678;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 11px;
+}
+
+.portrait-accent {
+  display: none;
+}
+
+.role-card {
+  right: -18px;
+  bottom: 28px;
+  max-width: 265px;
+  padding: 15px 17px;
+  border-radius: 11px;
+}
+
+.affiliation-bar {
+  justify-content: flex-start;
+}
+
+.affiliation-bar span:first-child {
+  padding-left: 0;
+}
+
+.intro-section,
+.section {
+  padding-block: 104px;
+}
+
+.section-heading {
+  margin-bottom: 48px;
+}
+
+.research-card,
+.award-card,
+.news-card,
+.archive-panel,
+.timeline-card,
+.contact-card,
+.book-feature,
+.feature-band {
+  border-radius: var(--radius);
+}
+
+.research-card,
+.award-card,
+.news-card {
+  box-shadow: none;
+}
+
+.research-card:hover,
+.award-card:hover,
+.news-card:hover {
+  transform: translateY(-3px);
+}
+
+.card-icon,
+.accordion-icon,
+.contact-icon {
+  border-radius: 9px;
+}
+
+.feature-band {
+  background: var(--navy);
+  box-shadow: none;
+}
+
+.section-navy {
+  background: #081b2e;
+}
+
+.lab-section {
+  background: linear-gradient(120deg, #0a3458, #0b5f72);
+}
+
+.button {
+  border-radius: 8px;
+}
+
+.button-primary {
+  background: var(--blue);
+  box-shadow: 0 10px 24px rgba(21, 95, 157, .18);
+}
+
+.site-footer {
+  background: #071725;
+}
+
+@media (max-width: 850px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portrait-wrap {
+    width: min(92%, 470px);
+  }
+
+  .affiliation-bar {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .intro-section,
+  .section {
+    padding-block: 72px;
+  }
+
+  .hero {
+    padding-top: 110px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.65rem, 13vw, 3.8rem);
+  }
+
+  .portrait-frame::before {
+    inset: 14px -10px -10px 14px;
+  }
+
+  .role-card {
+    right: auto;
+    bottom: auto;
+  }
+}
