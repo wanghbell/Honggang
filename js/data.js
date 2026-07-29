@@ -22,7 +22,7 @@ export const data = {
   ],
   publications: [
     ['Google Scholar Profile','View publication record and citation metrics.','https://scholar.google.com/citations?user=CJiNcbAAAAAJ&hl=en'],
-    ['IEEE Author Profile','Explore journal and conference publications in IEEE Xplore.','https://ieeexplore.ieee.org/author/37281186900'],
+    ['IEEE Author Profile','Explore journal and conference publications in IEEE Xplore.','https://ieeexplore.ieee.org/'],
     ['ORCID Record','View a persistent researcher identifier and professional record.','https://orcid.org/']
   ],
   awards: [
