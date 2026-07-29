@@ -3,8 +3,8 @@ export const data = {
   hero: {
     eyebrow: 'IEEE Fellow · Professor · Academic Leader',
     title: 'Advancing <span>intelligent multimedia</span>, secure networks, and connected health.',
-    intro: 'Honggang Wang is a professor and academic leader whose work spans artificial intelligence, multimedia systems, wireless networks, cybersecurity, Internet of Things, and healthcare technologies.',
-    metrics: [['10K+','Citations'],['55','h-index'],['30+','Graduate mentees'],['$5M+','Research funding']]
+    intro: 'Honggang Wang is a professor whose work spans artificial intelligence, multimedia systems, wireless networks, cybersecurity, Internet of Things, and healthcare technologies.',
+    metrics: [['10K+','Citations'],['58','h-index'],['100+','Graduate mentees'],['$5M+','Research funding']]
   },
   research: [
     {icon:'brain',title:'AI & Multimedia',text:'Semantic video communication, multimedia intelligence, trustworthy AI, deepfake detection, and edge learning.',tags:['Machine Learning','Video','Edge AI']},
