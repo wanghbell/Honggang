@@ -148,7 +148,7 @@ summary::-webkit-details-marker { display: none; }
 .record { display: grid; grid-template-columns: 90px 1fr; gap: 20px; padding: 17px 19px; border-radius: 13px; }
 .record strong, .newsitem time { color: var(--lime); font: 500 12px DM Mono, monospace; }
 .record p { color: #b5c7c0; }
-.record a, .contactline a { color: var(--mint); }
+.record a, .newsitem a, .contactline a { color: var(--mint); text-decoration: underline; text-decoration-color: rgba(84,229,176,.35); text-underline-offset: 3px; }
 .award { display: flex; align-items: flex-start; gap: 14px; }
 .award .num { flex: 0 0 36px; display: grid; place-items: center; height: 36px; color: #07110f; background: var(--amber); border-radius: 10px; font: 800 12px DM Mono, monospace; }
 .timeline { position: relative; padding-left: 22px; }
