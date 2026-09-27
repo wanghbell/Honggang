@@ -27,7 +27,6 @@ export const data = {
   ],
   awards: [
     {icon:'award',title:'IEEE Fellow',text:'Recognition for significant professional and technical contributions.'},
-    {icon:'shield',title:'AAIA Fellow',text:'Recognition from the Asia-Pacific Artificial Intelligence Association.'},
     {icon:'users',title:'Distinguished Lecturer',text:'Invited global service sharing research and professional expertise.'},
     {icon:'scholar',title:'NAE FOE Alumnus',text:'Participant in the National Academy of Engineering Frontiers of Engineering program.'}
   ]
