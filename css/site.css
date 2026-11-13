@@ -255,3 +255,106 @@ summary::after, .eyebrow::before { color: #0f97ce; }
 .labbox .btn { color: #075078 !important; background: #fff !important; }
 footer { color: #c9e3f4; background: #092d52; }
 @media (max-width: 1040px) { nav.open { background: rgba(245,251,255,.98); } }
+
+/* Focused academic layout */
+:root {
+  --max: 1080px;
+  --radius: 12px;
+  --shadow: 0 14px 36px rgba(24, 73, 108, .12);
+}
+
+body {
+  font-size: 15px;
+  line-height: 1.58;
+  background: #f7fafc;
+}
+
+.wrap { width: min(var(--max), calc(100% - 56px)); }
+
+.header { background: rgba(255, 255, 255, .96); }
+.nav { min-height: 70px; gap: 18px; }
+.brand { min-width: 210px; }
+.brandmark { width: 38px; height: 38px; border-radius: 7px; }
+.brand b { font-size: 14px; }
+nav a { padding: 8px 7px; font-size: 11px; }
+
+.hero {
+  min-height: auto;
+  padding: 72px 0;
+  background:
+    linear-gradient(90deg, rgba(248, 252, 255, .98) 0%, rgba(248, 252, 255, .92) 49%, rgba(248, 252, 255, .38) 72%, rgba(9, 49, 86, .08) 100%),
+    url('../assets/nyc-skyline-hero.png') center / cover no-repeat;
+}
+.hero::before { display: none; }
+.hero-grid { grid-template-columns: minmax(0, 1.4fr) minmax(280px, .6fr); gap: 54px; }
+.hero h1 {
+  max-width: 690px;
+  margin-bottom: 18px;
+  font-size: clamp(40px, 5.2vw, 66px);
+  line-height: 1.02;
+  letter-spacing: -.052em;
+}
+.lede { max-width: 700px; font-size: clamp(15px, 1.35vw, 17px); line-height: 1.68; }
+.pills { margin-top: 22px; }
+.pill { padding: 6px 10px; font-size: 10px; }
+.actions { margin-top: 25px; }
+.btn { min-height: 42px; padding: 0 16px; border-radius: 7px; font-size: 13px; }
+
+.portrait {
+  min-height: 410px;
+  border: 8px solid #fff;
+  border-radius: 12px;
+  outline: 1px solid #cbd9e4;
+  box-shadow: var(--shadow);
+}
+.role-card { inset: auto 12px 12px; padding: 13px 14px; border-radius: 8px; }
+.role-card b { font-size: 13px; }
+.role-card small { font-size: 10px; }
+
+section { padding: 72px 0; }
+.head { align-items: start; margin-bottom: 30px; }
+.head h2 { font-size: clamp(27px, 3vw, 38px); line-height: 1.12; letter-spacing: -.035em; }
+.head p { font-size: 14px; }
+.eyebrow { margin-bottom: 10px; font-size: 10px; }
+
+.grid { gap: 14px; }
+.card {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: none;
+}
+.card:hover { transform: translateY(-2px); }
+.card h3 { margin: 12px 0 7px; font-size: 16px; }
+.card p, .detailbody, .record p { font-size: 14px; }
+.icon { width: 38px; height: 38px; border-radius: 8px; font-size: 17px; }
+.metric b { font-size: 27px; }
+.metric span, .tag { font-size: 10px; }
+
+details { margin: 8px 0; border-radius: 9px; box-shadow: none; }
+summary { padding: 14px 16px; font-size: 14px; }
+.detailbody { padding: 0 17px 16px; }
+.record { grid-template-columns: 72px 1fr; gap: 15px; padding: 14px 16px; border-radius: 8px; }
+.newsitem { grid-template-columns: 72px 1fr; gap: 14px; padding: 14px 0; font-size: 14px; }
+.award .num { flex-basis: 30px; height: 30px; border-radius: 6px; }
+.labbox { padding: clamp(28px, 4vw, 44px); border-radius: 12px; box-shadow: none; }
+.labbox::after { font-size: 150px; }
+
+footer { padding: 24px 0; }
+
+@media (max-width: 1040px) {
+  nav { top: 62px; }
+  .hero-grid { grid-template-columns: 1.15fr .85fr; gap: 32px; }
+}
+
+@media (max-width: 760px) {
+  .wrap { width: min(var(--max), calc(100% - 32px)); }
+  .hero { padding: 50px 0; }
+  .hero-grid { grid-template-columns: 1fr; }
+  .portrait { width: min(100%, 390px); min-height: 420px; }
+  section { padding: 56px 0; }
+}
+
+@media (max-width: 520px) {
+  .hero h1 { font-size: clamp(36px, 12vw, 48px); }
+  .portrait { min-height: 360px; }
+}
